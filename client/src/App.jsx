@@ -1,9 +1,19 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Welcome } from './pages/welcome';
+import { Information } from './pages/information';
 
-import "./index.css";
-import { Welcome } from "./pages/welcome";
 function App() {
   return (
-    <Welcome />
+    <Router>
+      <Switch>
+        <Route path="/information">
+          <Information />
+        </Route>
+        <Route path="/">
+          <Welcome />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

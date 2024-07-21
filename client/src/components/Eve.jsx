@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import './style.css';
 
- export default Animation = ({ onEnd }) => {
+ export const Animation = ({ onEnd }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             onEnd();
