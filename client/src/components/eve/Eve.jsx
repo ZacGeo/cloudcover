@@ -1,8 +1,11 @@
 // AnimationComponent.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
+import { getCurrentTheme } from '../TimeTheme'
 
  export const Animation = ({ onEnd }) => {
+  const [theme] = useState(getCurrentTheme());
+
     useEffect(() => {
         const timer = setTimeout(() => {
             onEnd();
@@ -11,7 +14,7 @@ import './style.css';
     }, [onEnd]);
 
     return (
-       <div className='flex flex-col items-center justify-start min-h-screen pt-32 bg-blue-200'>
+       <div style={{ backgroundColor: theme.background, color: theme.color }} className='flex flex-col items-center justify-start min-h-screen pt-32 h-screen'>
 
          <div class="loader" className='mr-5'>
           <div class="modelViewPort">

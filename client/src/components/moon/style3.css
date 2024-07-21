@@ -1,0 +1,167 @@
+
+.content-circle {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    overflow: hidden;
+    background-color: #212f3c;
+    border-radius: 50%;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+  }
+  
+  .content-circle:before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 200px;
+    top: 300px;
+    border-radius: 50% 50% 0 0;
+    background-color: #000;
+  }
+  
+  
+  .frames:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    background-color: black;
+    top: 17px;
+    left: -10px;
+    box-shadow: 10px 40px black, 5px 150px black;
+  }
+  
+  .moon {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #95a5a6;
+    z-index: 1;
+    left: 80px;
+    top: 40px;
+    box-shadow: inset 7px -7px 0 rgba(0, 0, 0, 0.09);
+  }
+  
+  .moon:before,
+  .moon:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.09);
+    box-shadow: inset -5px 5px 0 rgba(0, 0, 0, 0.09);
+  }
+  .moon:before {
+    width: 30px;
+    height: 30px;
+    top: 50px;
+    left: 45px;
+  }
+  
+  .moon:after {
+    width: 40px;
+    height: 40px;
+    top: 100px;
+    left: 30px;
+  }
+  
+  .rain {
+    position: absolute;
+    z-index: 5;
+  }
+  
+  .rain:before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: #fff;
+    opacity: 0;
+    animation: lighting 3s linear infinite;
+  }
+  
+  .dropOne,
+  .dropTwo,
+  .dropThree,
+  .dropFour,
+  .dropFive {
+    position: absolute;
+    background-color: rgba(211, 211, 211, 0.3);
+    height: 10px;
+    width: 1px;
+    top: 0;
+    box-shadow: 0 -270px rgba(211, 211, 211, 0.3),
+      -50px -50px rgba(211, 211, 211, 0.3), -50px -150px rgba(211, 211, 211, 0.3),
+      50px -395px rgba(211, 211, 211, 0.3), 50px -200px rgba(211, 211, 211, 0.3),
+      50px -100px rgba(211, 211, 211, 0.3), 100px -400px rgba(211, 211, 211, 0.3),
+      100px -320px rgba(211, 211, 211, 0.3), 100px -150px rgba(211, 211, 211, 0.3),
+      150px -200px rgba(211, 211, 211, 0.3), 200px -100px rgba(211, 211, 211, 0.3),
+      200px -370px rgba(211, 211, 211, 0.3), 250px -330px rgba(211, 211, 211, 0.3),
+      250px -220px rgba(211, 211, 211, 0.3), 300px -70px rgba(211, 211, 211, 0.3),
+      300px -140px rgba(211, 211, 211, 0.3), 300px -300px rgba(211, 211, 211, 0.3);
+  }
+  
+  .dropOne {
+    animation: rain 1.5s linear infinite;
+    left: 100px;
+  }
+  
+  .dropTwo {
+    left: -50px;
+    animation: rain 1.2s linear infinite;
+  }
+  
+  .dropThree {
+    left: 50px;
+    animation: rain 1.7s linear infinite;
+  }
+  
+  .dropFour {
+    left: 150px;
+    animation: rain 1.4s linear infinite;
+  }
+  
+  .dropFive {
+    left: 80px;
+    animation: rain 1.3s linear infinite;
+  }
+  
+  @keyframes rain {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(1000px);
+    }
+  }
+  
+  @keyframes lighting {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 0;
+    }
+    11% {
+      opacity: 1;
+    }
+    14% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    21% {
+      opacity: 1;
+    }
+    24% {
+      opacity: 0;
+    }
+    104% {
+      opacity: 0;
+    }
+  }
+  

@@ -1,5 +1,5 @@
-import {Animation} from '../components/Eve';
-import Sun from '../components/Sun';
+import {Animation} from '../components/eve/Eve';
+import { getCurrentTheme, welcomeTimeTheme } from '../components/TimeTheme';
 import React, { useState, useEffect } from 'react';
 import { Information } from './information';
 
@@ -11,6 +11,8 @@ export const Welcome = () => {
     const [showWelcome, setShowWelcome] = useState(false);
     const [location, setLocation] = useState('');
     const [goToInfoPage, setGoToInfoPage] = useState(false);
+    
+    const [theme] = useState(getCurrentTheme());
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -34,8 +36,8 @@ export const Welcome = () => {
     return (
         <>
            {showWelcome ? (
-             <div className="flex flex-col items-center justify-start min-h-screen pt-32  bg-blue-200">
-                <Sun className="absolute top-0 left-0 w-full h-full" />
+             <div style={{ backgroundColor: theme.background, color: theme.color }} className="flex flex-col items-center justify-start min-h-screen pt-32 h-screen">
+                 {welcomeTimeTheme()}
                 <div className="relative z-10">
                     <h1 className="text-8xl mb-12 font-bold">CLOUCOVER</h1>
                     <p className="mt-12 font-semibold ml-12">Enter the location that you wish to see the weather</p>

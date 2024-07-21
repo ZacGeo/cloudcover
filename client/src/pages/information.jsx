@@ -15,7 +15,7 @@ export  function Information() {
     }, []);
     
     return (
-        <div style={{ backgroundColor: theme.background, color: theme.color }} className="text-xl">
+        <div style={{ backgroundColor: theme.background, color: theme.color }} className="h-screen text-xl">
             <p>INFORMATION</p>
         </div>
     );
