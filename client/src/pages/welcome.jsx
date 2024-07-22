@@ -2,7 +2,7 @@ import {Animation} from '../components/eve/Eve';
 import { getCurrentTheme, welcomeTimeTheme } from '../components/TimeTheme';
 import React, { useState, useEffect } from 'react';
 import { Information } from './information';
-
+import { Link as RouterLink } from "react-router-dom";
 
 
 
@@ -25,14 +25,7 @@ export const Welcome = () => {
         setLocation(event.target.value);
     };
 
-    const handleLocationSubmit = () => {
-        setGoToInfoPage(true);
-    };
-
-    if (goToInfoPage) {
-        return <Information location={location} />; // Pass the location to the InformationPage component
-    }
-
+    
     return (
         <>
            {showWelcome ? (
@@ -48,7 +41,7 @@ export const Welcome = () => {
                         value={location} 
                         onChange={handleLocationChange} 
                     />
-                    <button onClick={handleLocationSubmit} className='text-white ml-5'>Submit</button>
+                    <RouterLink to="/information"> Submit </RouterLink>
                 </div>
              </div>
             ) : (

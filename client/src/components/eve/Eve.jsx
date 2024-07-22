@@ -33,7 +33,7 @@ import { getCurrentTheme } from '../TimeTheme'
             </div>
           </div>
          </div>
-         <p className='text-3xl mt-12 text-black font-bold ml-12'>Hello Human</p>
+         <p className='text-3xl mt-12 text-{color} font-bold ml-12'>Hello Human</p>
         </div>
 
        </div>
