@@ -42,8 +42,8 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             const minutes = now.getMinutes();
             const seconds = now.getSeconds();
 
-            if (hours >= 9) {
-                // Draw the moon
+            if (hours >= 6 && hours < 21) {
+                // Draw the sun
                 const totalMinutes = hours * 60 + minutes + seconds / 60;
                 const sunX = (totalMinutes / 1440) * width; // 1440 = 24 * 60, total minutes in a day
                 const sunY = height - 200; // Fixed vertical position
@@ -70,7 +70,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             } else {
                 const totalMinutes = hours * 60 + minutes + seconds / 60;
                 const moonX = (totalMinutes / 1440) * width; // 1440 = 24 * 60, total minutes in a day
-                const moonY = height - 215; // Fixed vertical position
+                const moonY = height - 200; // Fixed vertical position
 
                 ctx.beginPath();
                 // Draw the moon at the top right corner
