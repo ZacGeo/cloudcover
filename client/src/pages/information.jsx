@@ -1,6 +1,7 @@
 import { getCurrentTheme } from '../components/TimeTheme';
 import  { useState, useEffect } from 'react';
 import   CanvasComponent  from '../components/phases/Phases';
+import ClockCard from '../components/ClockCard';
 
 
 export  function Information() {
@@ -19,7 +20,13 @@ export  function Information() {
             <div class="flex items-center justify-center">
               <div className= "flex flex-col justify-center items-center bg-gray-800 text-white rounded-lg shadow-lg p-10 w-150" >
                   <CanvasComponent />
-                  <p>INFORMATION</p>
+                  <div style={{
+                    position: 'absolute',
+                    top: '30%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)'
+                   }}><ClockCard />
+                   </div>
               </div>
             </div>
             
