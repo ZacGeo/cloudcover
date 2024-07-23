@@ -60,7 +60,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
       
     }, [width, height]);
   
-    return <canvas ref={canvasRef} width={450} height={225} style={{ border: '1px solid #1f2937' }} />;
+    return <canvas ref={canvasRef} width={450} height={225} style={{ border: '1px solid #1f2937', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.5)' }} />;
 };
 
 export default CanvasComponent;
