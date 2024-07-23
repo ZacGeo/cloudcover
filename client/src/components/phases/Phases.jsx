@@ -5,6 +5,8 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
     const theme = useState(getCurrentTheme());
     const canvasRef = useRef(null);
 
+    
+
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
@@ -12,6 +14,8 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
         canvas.height = height;
 
         const drawScene = () => {
+
+            
             // Fill the canvas with the base color
             ctx.fillStyle = '#1f2937';
             ctx.fillRect(0, 0, width, height);
@@ -38,28 +42,43 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             const minutes = now.getMinutes();
             const seconds = now.getSeconds();
 
-            // Calculate the sun's position based on the time
-            const totalMinutes = hours * 60 + minutes + seconds / 60;
-            const sunX = (totalMinutes / 1440) * width; // 1440 = 24 * 60, total minutes in a day
-            const sunY = height - 215; // Fixed vertical position
-
-            // Calculate sun color based on its position
-            let sunColor = 'yellow'; // Default sun color
-            if (sunX <= width / 2) {
-                // Morning to noon: Brighter yellow
-                const brightness = Math.min(255, 200 + (sunX / (width / 2)) * 55);
-                sunColor = `rgb(255, ${brightness}, 0)`;
+            if (hours >= 9) {
+                // Draw the moon
+                const totalMinutes = hours * 60 + minutes + seconds / 60;
+                const sunX = (totalMinutes / 1440) * width; // 1440 = 24 * 60, total minutes in a day
+                const sunY = height - 200; // Fixed vertical position
+        
+                // Calculate sun color based on its position
+                let sunColor = 'yellow'; // Default sun color
+                if (sunX <= width / 2) {
+                    // Morning to noon: Brighter yellow
+                    const brightness = Math.min(255, 200 + (sunX / (width / 2)) * 55);
+                    sunColor = `rgb(255, ${brightness}, 0)`;
+                } else {
+                    // Noon to evening: Transition to orange
+                    const orangeShade = Math.min(255, ((sunX - width / 2) / (width / 2)) * 255);
+                    sunColor = `rgb(255, ${200 - orangeShade}, 0)`;
+                }
+        
+                // Draw the sun with dynamic color
+                ctx.beginPath();
+                ctx.arc(sunX, sunY, 20, 0, 2 * Math.PI, false);
+                ctx.fillStyle = sunColor;
+                ctx.fill();
+                
+                ctx.restore();
             } else {
-                // Noon to evening: Transition to orange
-                const orangeShade = Math.min(255, ((sunX - width / 2) / (width / 2)) * 255);
-                sunColor = `rgb(255, ${200 - orangeShade}, 0)`;
-            }
+                const totalMinutes = hours * 60 + minutes + seconds / 60;
+                const moonX = (totalMinutes / 1440) * width; // 1440 = 24 * 60, total minutes in a day
+                const moonY = height - 215; // Fixed vertical position
 
-            // Draw the sun with dynamic color
-            ctx.beginPath();
-            ctx.arc(sunX, sunY, 20, 0, 2 * Math.PI, false);
-            ctx.fillStyle = sunColor;
-            ctx.fill();
+                ctx.beginPath();
+                // Draw the moon at the top right corner
+                ctx.arc(moonX, moonY, 20, 0, 2 * Math.PI, false);
+                ctx.closePath();
+                ctx.fillStyle = '#fff'; // Moon color
+                ctx.fill();
+            }
         };
 
         const animate = () => {
@@ -70,6 +89,10 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
         animate();
     }, [width, height]);
 
+    
+    
+
+    
     return <canvas ref={canvasRef} width={450} height={225} style={{ border: '1px solid #1f2937', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.5)' }} />;
 };
 
