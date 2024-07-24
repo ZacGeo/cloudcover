@@ -27,8 +27,9 @@ export  function Information() {
                     left: '50%',
                     transform: 'translate(-50%, -50%)'
                    }}><ClockCard />
-                   {/*<Hot />*/}
+                   
                    </div>
+                   <Hot />
               </div>
             </div>
             
