@@ -54,7 +54,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
                 const timeFraction = (elapsedMinutes / totalRangeMinutes + 1) % 1;
 
                 // Calculate the current angle
-                const startAngle = isSun ? Math.PI : 0;
+                const startAngle = isSun ? Math.PI : Math.PI * 2;
                 const endAngle = isSun ? 2 * Math.PI : Math.PI;
                 const currentAngle = startAngle + timeFraction * (endAngle - startAngle);
 
