@@ -32,3 +32,19 @@ export function welcomeTimeTheme() {
         );
     }
 }
+
+
+export function getInformationTheme(){
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour < 19) {
+        return {
+            background: "beige",
+            color: 'brown'
+        };
+    } else {
+        return {
+            background: '#212f3c',
+            color: 'white'
+        };
+    }
+}

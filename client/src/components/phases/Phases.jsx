@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { getCurrentTheme } from '../TimeTheme';
+import { getInformationTheme } from '../TimeTheme';
 
 const CanvasComponent = ({ width = 550, height = 325 }) => {
-    const [theme, setTheme] = useState(getCurrentTheme());
+    const [theme] = useState(getInformationTheme());
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
 
         const drawScene = () => {
             // Fill the canvas with the base color
-            ctx.fillStyle = '#1f2937';
+            ctx.fillStyle = theme.background;
             ctx.fillRect(0, 0, width, height);
 
             const radius = (width / 2) * 0.9; // Reduce the radius by 10%
@@ -24,15 +24,22 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI, false);
             ctx.closePath();
-            ctx.fillStyle = '#1f2937'; // Base color for the half-circle
+            ctx.fillStyle = theme.background; // Base color for the half-circle
             ctx.fill();
 
             // Outline the half-circle with a gradient or solid color
             ctx.lineWidth = 5; // Adjust the thickness of the border
             const edgeGradient = ctx.createLinearGradient(0, 0, width, 0);
-            edgeGradient.addColorStop(0, 'rgba(255,255,255,0)'); // Start with transparent
-            edgeGradient.addColorStop(0.5, '#ffffff'); // Solid color at the middle
-            edgeGradient.addColorStop(1, 'rgba(255,255,255,0)'); // End with transparent
+            if(theme.background === 'beige') {
+                edgeGradient.addColorStop(0, 'rgba(255,0,0,0)'); // Start with transparent
+                edgeGradient.addColorStop(0.5, '#f0e68c'); // Solid color at the middle
+                edgeGradient.addColorStop(1, 'rgba(255,0,0,0)'); // End with transparent
+            }else{
+                 edgeGradient.addColorStop(0, 'rgba(255,255,255,0)'); // Start with transparent
+                 edgeGradient.addColorStop(0.5, '#ffffff'); // Solid color at the middle
+                 edgeGradient.addColorStop(1, 'rgba(255,255,255,0)'); // End with transparent
+            }
+           
             ctx.strokeStyle = edgeGradient;
             ctx.stroke();
 
@@ -122,7 +129,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             ref={canvasRef}
             width={width}
             height={height}
-            style={{ border: '1px solid #1f2937', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.5)' }}
+            style={{ border: 'none', borderRadius: '10px', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.5)' }}
         />
     );
 };
