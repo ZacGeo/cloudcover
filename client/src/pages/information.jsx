@@ -2,7 +2,8 @@ import { getCurrentTheme } from '../components/TimeTheme';
 import  { useState, useEffect } from 'react';
 import   CanvasComponent  from '../components/phases/Phases';
 import ClockCard from '../components/ClockCard';
-import Hot from '../components/instructions/TooHot';
+import {Hot, HotNight} from '../components/instructions/TooHot';
+import {Cold, ColdNight} from '../components/instructions/TooCold';
 
 
 export  function Information() {
@@ -29,7 +30,8 @@ export  function Information() {
                    }}><ClockCard />
                    
                    </div>
-                   <Hot />
+                   {/*<HotNight />*/}
+                   {/*<Cold />*/}
               </div>
             </div>
             

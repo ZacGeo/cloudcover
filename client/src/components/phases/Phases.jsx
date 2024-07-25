@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getCurrentTheme } from '../TimeTheme';
 
 const CanvasComponent = ({ width = 550, height = 325 }) => {
-    const theme = useState(getCurrentTheme());
+    const [theme, setTheme] = useState(getCurrentTheme());
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -26,7 +26,6 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             ctx.closePath();
             ctx.fillStyle = '#1f2937'; // Base color for the half-circle
             ctx.fill();
-
 
             // Outline the half-circle with a gradient or solid color
             ctx.lineWidth = 5; // Adjust the thickness of the border
@@ -54,8 +53,8 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
                 const timeFraction = (elapsedMinutes / totalRangeMinutes + 1) % 1;
 
                 // Calculate the current angle
-                const startAngle = isSun ? Math.PI : Math.PI * 2;
-                const endAngle = isSun ? 2 * Math.PI : Math.PI;
+                const startAngle = -Math.PI ;
+                const endAngle = 0;
                 const currentAngle = startAngle + timeFraction * (endAngle - startAngle);
 
                 // Calculate the coordinates
@@ -65,25 +64,24 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
                 return { x, y, timeFraction };
             };
 
-            // Determine if it's time for the sun or the moon
-            let isSunTime = hours >= 6 && hours < 21;
-            let isMoonTime = !isSunTime;
+            let isSunTime = hours >= 8 && hours < 21;
+            let isMoonTime =  hours >= 21 || hours < 8;
 
             if (isSunTime) {
                 // Draw the sun
-                const { x: sunX, y: sunY, timeFraction } = drawSunOrMoon(true, 6, 21);
+                const { x: sunX, y: sunY, timeFraction } = drawSunOrMoon(true, 20, 9);
 
                 // Calculate sun color transition from orange to yellow and back to orange
                 let sunColor;
                 if (timeFraction < 0.5) {
-                    // From 6:00 to halfway to 21:00
+                    // From 8:00 PM to halfway to 9:00 AM
                     const rValue = 255;
                     const gValue = Math.floor(165 + timeFraction * 2 * 90);
                     const bValue = 0;
                     sunColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
                 } else {
                     const rValue = 255;
-                    const gValue = Math.floor(255 - (timeFraction -0.3) * 2 * 90);
+                    const gValue = Math.floor(255 - (timeFraction - 0.5) * 2 * 90);
                     const bValue = 0;
                     sunColor = `rgb(${rValue}, ${gValue}, ${bValue})`;
                 }
@@ -94,16 +92,16 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
                 ctx.fill();
             } else if (isMoonTime) {
                 // Draw the moon
-                const { x: moonX, y: moonY, timeFraction } = drawSunOrMoon(false, 21, 6);
+                const { x: moonX, y: moonY, timeFraction } = drawSunOrMoon(false, 9, 20);
 
                 // Calculate moon color transition from grey to white and back to grey
                 let moonColor;
                 if (timeFraction < 0.5) {
-                    // From 21:00 to halfway to 6:00
+                    // From 9:00 AM to halfway to 8:00 PM
                     const colorValue = Math.floor(128 + timeFraction * 2 * 127);
                     moonColor = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
                 } else {
-                    // From halfway to 6:00 to 6:00
+                    // From halfway to 8:00 PM to 8:00 PM
                     const colorValue = Math.floor(255 - (timeFraction - 0.5) * 2 * 127);
                     moonColor = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
                 }
@@ -114,7 +112,6 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
                 ctx.fill();
             }
         };
-
         drawScene();
         const interval = setInterval(drawScene, 1000);
         return () => clearInterval(interval);
@@ -123,12 +120,11 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
     return (
         <canvas
             ref={canvasRef}
-            width={450}
-            height={225}
+            width={width}
+            height={height}
             style={{ border: '1px solid #1f2937', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.5)' }}
         />
     );
 };
 
 export default CanvasComponent;
-
