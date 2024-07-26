@@ -10,7 +10,6 @@ export const Welcome = () => {
     const [showWelcome, setShowWelcome] = useState(false);
     const [location, setLocation] = useState('');
     const [theme] = useState(getCurrentTheme());
-
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowWelcome(true);
