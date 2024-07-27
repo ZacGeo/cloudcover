@@ -1,7 +1,7 @@
 import {Animation} from '../components/eve/Eve';
-import { getCurrentTheme, welcomeTimeTheme } from '../components/TimeTheme';
+import { getCurrentTheme, welcomeTimeTheme } from '../components/usefulFunctions/TimeTheme';
 import React, { useState, useEffect } from 'react';
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 
 
@@ -46,7 +46,7 @@ export const Welcome = () => {
                     <p className="mt-12 font-semibold ml-12">Enter the location that you wish to see the weather</p>
                     <input 
                         type="text" 
-                        className="mt-6 ml-12 p-2 border border-gray-300 rounded w-1/2" 
+                        className="mt-6 ml-12 p-2 border text-black rounded w-1/2" 
                         placeholder="Enter some text" 
                         value={location} 
                         onChange={handleLocationChange} 

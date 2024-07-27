@@ -1,7 +1,7 @@
-import { getCurrentTheme , getInformationTheme} from '../components/TimeTheme';
+import { getCurrentTheme , getInformationTheme} from '../components/usefulFunctions/TimeTheme';
 import  { useState, useEffect } from 'react';
 import   CanvasComponent  from '../components/phases/Phases';
-import ClockCard from '../components/ClockCard';
+import ClockCard from '../components/usefulFunctions/ClockCard';
 import {Hot, HotNight} from '../components/instructions/TooHot';
 import {Cold, ColdNight} from '../components/instructions/TooCold';
 import WeatherCard from '../components/other/other';

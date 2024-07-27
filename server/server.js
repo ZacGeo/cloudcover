@@ -1,49 +1,47 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-require('dotenv').config();
+const path = require('path');
+const { getCoordinates } = require('./services/locationService');
 
 const app = express();
-const port = 3000;
-
-// Use CORS to allow requests from the frontend
+const port =  5000; 
 app.use(cors());
+app.use(express.json());
 
-// AccuWeather API configuration
-const apiKey = process.env.ACCUWEATHER_API_KEY;
-const baseUrl = 'http://dataservice.accuweather.com';
-
-// Endpoint to get location key
-app.get('/location/:city', async (req, res) => {
+app.post('/api/weather', async (req, res) => {
+    const { city } = req.body;
     try {
-        const city = req.params.city;
-        const response = await axios.get(`${baseUrl}/locations/v1/cities/search`, {
+        const { latitude, longitude } = await getCoordinates(city);
+
+    
+        const weatherResponse = await axios.get(`https://api.open-meteo.com/v1/forecast`, {
             params: {
-                apikey: apiKey,
-                q: city,
-            },
+                latitude: latitude,
+                longitude: longitude,
+                current_weather: true,
+                timezone: 'GMT',
+                hourly: ['temperature_2m', 'relative_humidity_2m', 'dew_point_2m', 'rain', 'visibility'],
+                daily: ['temperature_2m_max', 'temperature_2m_min', 'daylight_duration', 'uv_index_max', 'wind_speed_10m_max', 'wind_direction_10m_dominant']
+            }
         });
-        res.json(response.data);
+
+        res.json(weatherResponse.data);
     } catch (error) {
-        res.status(500).send('Error fetching location data');
+        res.status(500).json({ error: error.message });
     }
 });
 
-// Endpoint to get weather data
-app.get('/weather/:locationKey', async (req, res) => {
-    try {
-        const locationKey = req.params.locationKey;
-        const response = await axios.get(`${baseUrl}/currentconditions/v1/${locationKey}`, {
-            params: {
-                apikey: apiKey,
-            },
-        });
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).send('Error fetching weather data');
-    }
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// The "catchall" handler: for any request that doesn't match the API routes above, send back React's index.html file.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
+// Start the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);
 });

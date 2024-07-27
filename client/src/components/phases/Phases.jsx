@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { getInformationTheme } from '../TimeTheme';
+import { getInformationTheme } from '../usefulFunctions/TimeTheme';
 
 const CanvasComponent = ({ width = 550, height = 325 }) => {
     const [theme] = useState(getInformationTheme());

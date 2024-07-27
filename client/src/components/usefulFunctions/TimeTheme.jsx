@@ -1,5 +1,5 @@
-import Sun from './sun/Sun';
-import Moon from './moon/Moon';
+import Sun from '../sun/Sun';
+import Moon from '../moon/Moon';
 
 export function getCurrentTheme() {
     const hour = new Date().getHours();

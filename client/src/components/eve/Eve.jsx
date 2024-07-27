@@ -1,7 +1,7 @@
 // AnimationComponent.js
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import { getCurrentTheme } from '../TimeTheme'
+import { getCurrentTheme } from '../usefulFunctions/TimeTheme'
 
  export const Animation = ({ onEnd }) => {
   const [theme] = useState(getCurrentTheme());

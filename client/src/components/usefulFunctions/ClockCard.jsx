@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {  getInformationTheme } from '../TimeTheme';
+import {  getInformationTheme } from './TimeTheme';
 
 export default function ClockCard() {
     const [theme] = useState(getInformationTheme());
