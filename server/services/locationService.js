@@ -1,15 +1,19 @@
 const axios = require('axios');
 
-exports.getCoordinates = async (location) => {
-    const response = await axios.get(`http://api.positionstack.com/v1/forward`, {
-        params: {
-            access_key: 'your_access_key',
-            query: location
+async function getCoordinates(city) {
+    try {
+        const geoResponse = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`);
+        if (geoResponse.data.results && geoResponse.data.results.length > 0) {
+            const { latitude, longitude } = geoResponse.data.results[0];
+            return { latitude, longitude };
+        } else {
+            throw new Error('Location not found');
         }
-    });
-    const data = response.data.data[0];
-    return {
-        latitude: data.latitude,
-        longitude: data.longitude
-    };
+    } catch (error) {
+        throw new Error('Error fetching coordinates: ' + error.message);
+    }
+}
+
+module.exports = {
+    getCoordinates,
 };
