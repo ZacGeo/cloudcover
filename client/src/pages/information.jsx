@@ -4,7 +4,7 @@ import   CanvasComponent  from '../components/phases/Phases';
 import ClockCard from '../components/ClockCard';
 import {Hot, HotNight} from '../components/instructions/TooHot';
 import {Cold, ColdNight} from '../components/instructions/TooCold';
-
+import WeatherCard from '../components/other/other';
 
 export  function Information() {
     const [theme, setTheme] = useState(getCurrentTheme());
@@ -36,6 +36,7 @@ export  function Information() {
                    </div>
                    {/*<HotNight />*/}
                    {/*<Cold />*/}
+                   {/*<WeatherCard weatherData={weatherData}/>*/}
               </div>
             </div>
             
