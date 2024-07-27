@@ -10,6 +10,10 @@ export const Welcome = () => {
     const [showWelcome, setShowWelcome] = useState(false);
     const [location, setLocation] = useState('');
     const [theme] = useState(getCurrentTheme());
+
+
+    const navigate = useNavigate();
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowWelcome(true);
@@ -21,6 +25,16 @@ export const Welcome = () => {
         setLocation(event.target.value);
     };
 
+    const handleSubmit = async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/weather?location=${location}`);
+            const data = await response.json();
+            setWeatherData(data);
+            navigate('/information');
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+        }
+    };
     
     return (
         <>
@@ -37,7 +51,7 @@ export const Welcome = () => {
                         value={location} 
                         onChange={handleLocationChange} 
                     />
-                    <RouterLink to="/information"> Submit </RouterLink>
+                     <button onClick={handleSubmit}>Submit</button>
                 </div>
              </div>
             ) : (
