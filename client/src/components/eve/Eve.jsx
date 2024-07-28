@@ -16,20 +16,20 @@ import { getCurrentTheme } from '../usefulFunctions/TimeTheme'
     return (
        <div style={{ backgroundColor: theme.background, color: theme.color }} className='flex flex-col items-center justify-start min-h-screen pt-32 h-screen'>
 
-         <div class="loader" className='mr-5'>
-          <div class="modelViewPort">
-            <div class="eva">
-             <div class="head">
-               <div class="eyeChamber">
-                <div class="eye"></div>
-                <div class="eye"></div>
+         <div className="loader mt-5">
+          <div className="modelViewPort">
+            <div className="eva">
+             <div className="head">
+               <div className="eyeChamber">
+                <div className="eye"></div>
+                <div className="eye"></div>
                </div>
              </div>
-             <div class="body">
-             <div class="hand"></div>
-             <div class="hand"></div>
-             <div class="scannerThing"></div>
-             <div class="scannerOrigin"></div>
+             <div className="body">
+             <div className="hand"></div>
+             <div className="hand"></div>
+             <div className="scannerThing"></div>
+             <div className="scannerOrigin"></div>
             </div>
           </div>
          </div>
