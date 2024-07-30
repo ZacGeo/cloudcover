@@ -29,11 +29,11 @@ const WeatherCard = ({ weatherData }) => {
   };
 
   return (
-      <div className="weather-card">
+      <div className="weather-card  mt-5">
           <h2>Current Weather</h2>
           {currentHourIndex !== -1 && (
               <>
-                  <p>Time: {new Date(currentHourlyData.time).toISOString()}</p>
+                  
                   <p>Temperature: {currentHourlyData.temperature2m}°C</p>
                   <p>Relative Humidity: {currentHourlyData.relativeHumidity2m}%</p>
                   <p>Dew Point: {currentHourlyData.dewPoint2m}°C</p>
@@ -46,7 +46,7 @@ const WeatherCard = ({ weatherData }) => {
           <h2>Today's Weather</h2>
           {currentDayIndex !== -1 && (
               <div>
-                  <p>Date: {new Date(currentDailyData.time).toISOString()}</p>
+                  
                   <p>UV Index Max: {currentDailyData.uvIndexMax}</p>
               </div>
           )}

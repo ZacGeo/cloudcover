@@ -129,7 +129,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             ref={canvasRef}
             width={width}
             height={height}
-            style={{ border: 'none', borderRadius: '10px', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.5)' }}
+            style={{ border: 'none' }}
         />
     );
 };
