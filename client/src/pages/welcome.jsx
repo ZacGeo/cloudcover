@@ -1,13 +1,15 @@
 import { Animation } from "../components/eve/Eve";
-import { getCurrentTheme, welcomeTimeTheme } from "../components/usefulFunctions/TimeTheme";
+import {
+  getCurrentTheme,
+  welcomeTimeTheme,
+} from "../components/usefulFunctions/TimeTheme";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { WeatherContext } from "../components/context/Context";
-
 
 export const Welcome = () => {
   const [showWelcome, setShowWelcome] = useState(false);
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("Athens");
   const [theme] = useState(getCurrentTheme());
   const { weatherData, setWeatherData } = useContext(WeatherContext);
 
@@ -16,7 +18,7 @@ export const Welcome = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowWelcome(true);
-    }, 4000); // Match the duration of the animation
+    }, 3000); // Match the duration of the animation
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,20 +26,19 @@ export const Welcome = () => {
     setLocation(event.target.value);
   };
 
-  const handleSubmit = async () => {
+  const fetchData = async (loc) => {
     try {
+      console.log("Fetching weather data at location: " + loc);
       const nameResult = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=5&language=en&format=json`
+        `https://geocoding-api.open-meteo.com/v1/search?name=${loc}&count=5&language=en&format=json`
       );
       const nameData = await nameResult.json();
       const latitude = nameData.results[0].latitude || null;
       const longitude = nameData.results[0].longitude || null;
 
-      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
       if (!nameData || !latitude || !longitude) {
-        // Display Error
         console.log("There was a problem...");
-        return; // Exit the function if there was a problem
+        return;
       }
 
       // Elsewhere, there are results
@@ -47,12 +48,21 @@ export const Welcome = () => {
       const locData = await locResult.json();
 
       setWeatherData(locData);
-
-      navigate('/information', { state: { weatherData: locData } }); // Navigate to the information page
     } catch (e) {
       console.error(e);
     }
   };
+
+  const handleSubmit = async () => {
+    await fetchData(location);
+    navigate("/information");
+  };
+
+  useEffect(() => {
+    console.log('HELLO BITHCASSOHE');
+
+    fetchData(location);
+  }, []);
 
   return (
     <>

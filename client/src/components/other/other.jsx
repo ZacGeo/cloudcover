@@ -1,55 +1,57 @@
 const WeatherCard = ({ weatherData }) => {
-    if (!weatherData) {
-        return <div>Loading...</div>;
-    }
+  if (!weatherData) {
+      return <div>Loading...</div>;
+  }
 
-    // Destructuring data for easier access
-    const { 
-        hourly, 
-        daily, 
-        hourly_units: { time: hourlyTimeUnit }, 
-        daily_units: { time: dailyTimeUnit } 
-    } = weatherData;
+  // Get the current date and time
+  const currentTime = new Date().toISOString();
 
-    return (
-        <div className="weather-card">
-            <h2>Current Weather</h2>
-            {hourly.time.length > 0 ? (
-                <>
-                    <p>Time: {new Date(hourly.time[0]).toISOString()}</p>
-                    <p>Temperature: {hourly.temperature_2m[0]}°C</p>
-                    <p>Relative Humidity: {hourly.relative_humidity_2m[0]}%</p>
-                    <p>Dew Point: {hourly.dew_point_2m[0]}°C</p>
-                    <p>Cloud Cover: {hourly.cloud_cover[0]}%</p>
-                    <p>Visibility: {(hourly.visibility[0] / 1000).toFixed(2)} km</p>
-                    <p>Wind Speed: {hourly.wind_speed_10m[0]} km/h</p>
-                    <p>Wind Direction: {hourly.wind_direction_10m[0]}°</p>
-                </>
-            ) : (
-                <p>No current weather data available.</p>
-            )}
-            <h2>Hourly Weather</h2>
-            {hourly.time.map((time, index) => (
-                <div key={index}>
-                    <p>Time: {new Date(time).toISOString()}</p>
-                    <p>Temperature: {hourly.temperature_2m[index]}°C</p>
-                    <p>Relative Humidity: {hourly.relative_humidity_2m[index]}%</p>
-                    <p>Dew Point: {hourly.dew_point_2m[index]}°C</p>
-                    <p>Cloud Cover: {hourly.cloud_cover[index]}%</p>
-                    <p>Visibility: {(hourly.visibility[index] / 1000).toFixed(2)} km</p>
-                    <p>Wind Speed: {hourly.wind_speed_10m[index]} km/h</p>
-                    <p>Wind Direction: {hourly.wind_direction_10m[index]}°</p>
-                </div>
-            ))}
-            <h2>Daily Weather</h2>
-            {daily.time.map((time, index) => (
-                <div key={index}>
-                    <p>Time: {new Date(time).toISOString()}</p>
-                    <p>UV Index: {daily.uv_index_max[index]}</p>
-                </div>
-            ))}
-        </div>
-    );
+  // Find the closest time index in the hourly data
+  const currentHourIndex = weatherData.hourly.time.findIndex(time => time.startsWith(currentTime.slice(0, 13)));
+
+  // Extract the current hourly data
+  const currentHourlyData = {
+      time: weatherData.hourly.time[currentHourIndex],
+      temperature2m: weatherData.hourly.temperature_2m[currentHourIndex],
+      relativeHumidity2m: weatherData.hourly.relative_humidity_2m[currentHourIndex],
+      dewPoint2m: weatherData.hourly.dew_point_2m[currentHourIndex],
+      cloudCover: weatherData.hourly.cloud_cover[currentHourIndex],
+      visibility: weatherData.hourly.visibility[currentHourIndex],
+      windSpeed10m: weatherData.hourly.wind_speed_10m[currentHourIndex],
+      windDirection10m: weatherData.hourly.wind_direction_10m[currentHourIndex],
+  };
+
+  // Extract the daily data for today
+  const currentDayIndex = weatherData.daily.time.findIndex(time => time.startsWith(currentTime.slice(0, 10)));
+  const currentDailyData = {
+      time: weatherData.daily.time[currentDayIndex],
+      uvIndexMax: weatherData.daily.uv_index_max[currentDayIndex],
+  };
+
+  return (
+      <div className="weather-card">
+          <h2>Current Weather</h2>
+          {currentHourIndex !== -1 && (
+              <>
+                  <p>Time: {new Date(currentHourlyData.time).toISOString()}</p>
+                  <p>Temperature: {currentHourlyData.temperature2m}°C</p>
+                  <p>Relative Humidity: {currentHourlyData.relativeHumidity2m}%</p>
+                  <p>Dew Point: {currentHourlyData.dewPoint2m}°C</p>
+                  <p>Cloud Cover: {currentHourlyData.cloudCover}%</p>
+                  <p>Visibility: {(currentHourlyData.visibility / 1000).toFixed(2)} km</p>
+                  <p>Wind Speed: {currentHourlyData.windSpeed10m} km/h</p>
+                  <p>Wind Direction: {currentHourlyData.windDirection10m}°</p>
+              </>
+          )}
+          <h2>Today's Weather</h2>
+          {currentDayIndex !== -1 && (
+              <div>
+                  <p>Date: {new Date(currentDailyData.time).toISOString()}</p>
+                  <p>UV Index Max: {currentDailyData.uvIndexMax}</p>
+              </div>
+          )}
+      </div>
+  );
 };
 
 export default WeatherCard;

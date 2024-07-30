@@ -11,8 +11,8 @@ function App() {
     <WeatherContext.Provider value={{weatherData, setWeatherData}}>
       <Router>
         <Routes>
-          <Route path="/information" element={<Information />} />
           <Route path="/" element={<Welcome />} />
+          <Route path="/information" element={<Information />} />
         </Routes>
       </Router>
     </WeatherContext.Provider>
