@@ -21,7 +21,7 @@ export default function ClockCard() {
                   <h4 className='text-xl font-extrabold' style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }}>
                      {time.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
                   </h4>
-                </div>    
+                </div>     
             </div>
         </div>
     );

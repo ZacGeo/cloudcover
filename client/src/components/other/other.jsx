@@ -4,6 +4,7 @@ const WeatherCard = ({ weatherData }) => {
     return <div>Loading...</div>;
   }
 
+  
   // Get the current date and time
   const currentTime = new Date().toISOString();
 
@@ -30,6 +31,7 @@ const WeatherCard = ({ weatherData }) => {
         <div className="text-xl font-semibold">Real Feel</div>
         <div className="text-2xl font-bold">{currentHourlyData.temperature2m}°C</div>
       </div>
+      
       <div className="text-center">
         <div className="text-xl font-semibold">Wind</div>
         <div className="text-2xl font-bold">{currentHourlyData.windSpeed10m} km/h</div>

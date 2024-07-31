@@ -15,7 +15,7 @@ export const fetchData = async (loc) => {
       `https://geocoding-api.open-meteo.com/v1/search?name=${loc}&count=5&language=en&format=json`
     );
     const nameData = await nameResult.json();
-
+    console.log(nameData);
     if (!nameData || !nameData.results) {
       console.warn("Error: Location data not found");
       return;
@@ -65,7 +65,7 @@ export const Welcome = () => {
   };
 
   const handleSubmit = async () => {
-    DataStore.set("location", location);
+    await DataStore.set("location", location);
     setWeatherData(await fetchData(location));
     navigate("/information");
   };
