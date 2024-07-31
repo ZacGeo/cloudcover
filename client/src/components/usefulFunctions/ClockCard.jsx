@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import {  getInformationTheme } from './TimeTheme';
+import {  getCurrentTheme } from './TimeTheme';
 
 export default function ClockCard() {
-    const [theme] = useState(getInformationTheme());
+    const [theme] = useState(getCurrentTheme());
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
