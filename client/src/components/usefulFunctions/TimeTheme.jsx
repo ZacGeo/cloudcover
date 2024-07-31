@@ -6,11 +6,13 @@ export function getCurrentTheme() {
     if (hour >= 6 && hour < 19) {
         return {
             background: 'lightblue',
+            secondary: '#97d8e2',
             color: 'black'
         };
     } else {
         return {
-            background: '#212f3c',
+            background: '#141b31',
+            secondary: ' #2C2F48',
             color: 'white'
         };
     }
