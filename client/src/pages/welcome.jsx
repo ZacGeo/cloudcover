@@ -25,7 +25,8 @@ export const fetchData = async (loc) => {
 
     // Elsewhere, there are results
     const locResult = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,cloud_cover,visibility,wind_speed_10m,wind_speed_80m,wind_direction_10m,wind_direction_80m&daily=uv_index_max`
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,cloud_cover,visibility,wind_speed_10m,wind_speed_80m,wind_direction_10m,wind_direction_80m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunshine_duration,uv_index_max,rain_sum,snowfall_sum&timezone=auto`
+
     );
     const locData = await locResult.json();
 
