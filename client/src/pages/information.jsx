@@ -66,13 +66,14 @@ export function Information() {
               setWeatherData(data);
             }} />
             <Weather_Overview /> 
-              <Hot/>
+              <HotNight />
               {/*<Cold />*/}
             <WeatherCard weatherData={weatherData} className="mt-12 " />
           </div>
-          <Forecast weatherData={weatherData} />
-            
-          {/* <CanvasComponent />  */}
+          <div className="flex-col self-start ml-3">
+            <Forecast weatherData={weatherData} />
+            <CanvasComponent />  
+          </div>
         </div>
        
       </div>

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { getInformationTheme } from '../usefulFunctions/TimeTheme';
+import { getCurrentTheme } from '../usefulFunctions/TimeTheme';
 
-const CanvasComponent = ({ width = 550, height = 325 }) => {
-    const [theme] = useState(getInformationTheme());
+const CanvasComponent = ({ width = 380, height = 200 }) => {
+    const [theme] = useState(getCurrentTheme());
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
 
         const drawScene = () => {
             // Fill the canvas with the base color
-            ctx.fillStyle = theme.background;
+            ctx.fillStyle = theme.secondary;
             ctx.fillRect(0, 0, width, height);
 
             const radius = (width / 2) * 0.9; // Reduce the radius by 10%
@@ -24,7 +24,7 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI, false);
             ctx.closePath();
-            ctx.fillStyle = theme.background; // Base color for the half-circle
+            ctx.fillStyle = theme.secondary; // Base color for the half-circle
             ctx.fill();
 
             // Outline the half-circle with a gradient or solid color
@@ -125,12 +125,15 @@ const CanvasComponent = ({ width = 550, height = 325 }) => {
     }, [canvasRef, width, height]);
 
     return (
-        <canvas
+        <div className="mt-5">
+            <canvas
             ref={canvasRef}
             width={width}
             height={height}
-            style={{ border: 'none' }}
+            style={{ border: 'none', borderRadius: '10px' }}
         />
+        </div>
+        
     );
 };
 

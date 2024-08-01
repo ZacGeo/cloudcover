@@ -23,10 +23,10 @@ export default function Forecast({weatherData}) {
             <div className="flex flex-col gap-2">
                 {days.map((day, index) => (
                     <div key={index} className="flex justify-between items-center">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-4">
                             <span className="material-icons text-3xl">{day.icon}</span> <span>{day.day}</span>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex gap-8">
                             <span>{day.description}</span> <span>{day.tempHigh}° / {day.tempLow}°</span>
                         </div>
                     </div>
