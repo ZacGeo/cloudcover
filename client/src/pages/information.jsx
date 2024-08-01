@@ -4,7 +4,6 @@ import {
 } from "../components/usefulFunctions/TimeTheme";
 import { useState, useEffect, useContext } from "react";
 import CanvasComponent from "../components/phases/Phases";
-import ClockCard from "../components/usefulFunctions/ClockCard";
 import { Hot, HotNight } from "../components/instructions/TooHot";
 import { Cold, ColdNight } from "../components/instructions/TooCold";
 import { WeatherContext } from "../components/context/Context";
@@ -14,19 +13,18 @@ import { DataStore } from "../api";
 import SideBar from "../components/usefulFunctions/SideBar";
 import SearchBar from "../components/usefulFunctions/searchBar";
 import Weather_Overview from "../components/phases/Weather_Overview";
+import Forecast from "../components/phases/Forecast";
+
+
 
 export function Information() {
   const [theme, setTheme] = useState(getCurrentTheme());
   const [infoTheme, setInfoTheme] = useState(getInformationTheme());
   const [loaded, setLoaded] = useState(false);
-  // const [searchData, setSearchData] = useState();
   const { weatherData, setWeatherData } = useContext(WeatherContext);
   console.log(weatherData);
 
-  // const handleSearch = async (search) => {
-  //   setSearchData(search);
-  // };
-
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTheme(getCurrentTheme());
@@ -55,27 +53,28 @@ export function Information() {
   return loaded ? (
     <div
       style={{ backgroundColor: theme.background, color: theme.color }}
-      className="h-screen text-2xl"
+      className="h-screen text-2xl "
     >
       <div className=" font-roboto m-0 p-0 ">
-        <div className="container mx-auto p-4 h-screen flex">
+        <div className="container mx-auto p-4 h-screen flex ">
           
           <SideBar />
-
-          <div className="flex-col justify-between ">
+          
+          <div className="flex-col justify-between self-start ">
             <SearchBar onLocation={({ data, location }) => {
               DataStore.set("location", location);
               setWeatherData(data);
             }} />
-            {/* <ClockCard /> */}
-            <Weather_Overview />
-            <WeatherCard weatherData={weatherData} className="mt-12"/>
+            <Weather_Overview /> 
+              <Hot/>
+              {/*<Cold />*/}
+            <WeatherCard weatherData={weatherData} className="mt-12 " />
           </div>
-
-          {/* <CanvasComponent /> */}
+          <Forecast weatherData={weatherData} />
+            
+          {/* <CanvasComponent />  */}
         </div>
-        {/*<HotNight />*/}
-        {/*<Cold />*/}
+       
       </div>
     </div>
   ) : (

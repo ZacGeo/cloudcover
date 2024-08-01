@@ -32,7 +32,7 @@ export default function SearchBar({
 
 
     return (
-        <div className="rounded-lg shadow-lg p-4 flex justify-center relative">
+        <div className="rounded-lg p-4 flex justify-center relative">
             <input
                 type="text"
                 placeholder="Search for cities"

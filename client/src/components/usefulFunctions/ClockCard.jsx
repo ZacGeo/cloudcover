@@ -14,7 +14,7 @@ export default function ClockCard() {
     }, []);
 
     return (
-        <div style={{ backgroundColor: theme.background, color: theme.color }} >
+        <div style={{color: theme.color2 }} >
             <div className="flex items-center justify-center ">
                 <div className= "flex flex-col justify-center items-center p-10 w-150 " >
                   <h1 className='text-4xl font-extrabold ' style={{fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"}}>{time.toLocaleTimeString()}</h1>

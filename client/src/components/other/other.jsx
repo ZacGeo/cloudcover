@@ -1,5 +1,10 @@
+import { getCurrentTheme } from "../usefulFunctions/TimeTheme";
+
 
 const WeatherCard = ({ weatherData }) => {
+  const theme = getCurrentTheme();
+
+
   if (!weatherData) {
     return <div>Loading...</div>;
   }
@@ -26,7 +31,7 @@ const WeatherCard = ({ weatherData }) => {
   };
 
   return (
-    <div className=" rounded-lg shadow-lg p-6 flex justify-between gap-4 mt-5">
+    <div className=" rounded-lg shadow-lg p-6 flex justify-between gap-4 mt-3 " style={{background: theme.secondary, color: theme.color}}>
       <div className="text-center">
         <div className="text-xl font-semibold">Real Feel</div>
         <div className="text-2xl font-bold">{currentHourlyData.temperature2m}°C</div>
@@ -43,9 +48,6 @@ const WeatherCard = ({ weatherData }) => {
       <div className="text-center">
         <div className="text-xl font-semibold">UV Index</div>
         <div className="text-2xl font-bold">{currentDailyData.uvIndexMax}</div>
-      </div>
-      <div className="text-center cursor-pointer text-cyan-500">
-        <div className="text-xl font-semibold">See more</div>
       </div>
     </div>
   );
