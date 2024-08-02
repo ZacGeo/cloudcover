@@ -1,4 +1,5 @@
-export function RainNight() {
+
+export function ThunderstormNight() {
     return (
       <div
         style={{
@@ -9,22 +10,22 @@ export function RainNight() {
         <div className="p-8 flex flex-col">
           <ul className="list-disc space-y-2">
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Wear waterproof clothing and shoes to stay dry.
+              Stay indoors and avoid going outside unless absolutely necessary.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Avoid driving through flooded areas, as the depth of water may be greater than it appears.
+              Unplug electrical appliances to prevent damage from power surges.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Keep an umbrella and a raincoat handy when going outside.
+              Avoid using landline phones during the storm to prevent electrical shock.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Ensure gutters and drains are clear to prevent water buildup and potential flooding.
+              Keep away from windows and doors. Close blinds or curtains to protect against shattering glass.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Use rugs and mats at entrances to keep indoor areas dry and prevent slips.
+              If flooding is possible, move to higher ground and avoid low-lying areas.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Monitor local weather reports for updates and potential severe weather warnings.
+              Be aware of the signs of hypothermia, such as shivering, slurred speech, slow breathing, and confusion. Seek medical attention immediately if you suspect hypothermia.
             </li>
           </ul>
           
@@ -33,7 +34,7 @@ export function RainNight() {
     );
   }
 
-export function Rain() {
+export function Thunderstorm() {
     return (
       <div
         style={{
@@ -44,22 +45,22 @@ export function Rain() {
         <div className="p-8 flex flex-col">
           <ul className="list-disc space-y-2">
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Wear waterproof clothing and shoes to stay dry.
+              Stay indoors and avoid going outside unless absolutely necessary.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Drive slowly and maintain a safe distance from other vehicles, as roads may be slippery.
+              Use a waterproof and windproof outer layer if you must go outside.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Avoid driving through flooded areas, as the depth of water may be greater than it appears.
+              Avoid tall structures and isolated trees that could attract lightning.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Keep an umbrella and a raincoat handy when going outside.
+              Drive slowly and keep a safe distance from other vehicles. Watch out for flash flooding on the roads.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Ensure gutters and drains are clear to prevent water buildup and potential flooding.
+              Secure outdoor objects that could become projectiles in strong winds.
             </li>
             <li className="text-sm text-gray-300 font-sans font-bold">
-              Use rugs and mats at entrances to keep indoor areas dry and prevent slips.
+              Keep your home and office equipped with emergency supplies, including flashlights, batteries, and a first aid kit.
             </li>
           </ul>
          

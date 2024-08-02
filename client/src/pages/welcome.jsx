@@ -95,7 +95,7 @@ export const Welcome = () => {
               value={location}
               onChange={handleLocationChange}
             />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} className="ml-4">Submit</button>
           </div>
         </div>
       ) : (

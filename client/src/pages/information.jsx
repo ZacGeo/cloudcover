@@ -4,8 +4,7 @@ import {
 } from "../components/usefulFunctions/TimeTheme";
 import { useState, useEffect, useContext } from "react";
 import CanvasComponent from "../components/phases/Phases";
-import { Hot, HotNight } from "../components/instructions/TooHot";
-import { Cold, ColdNight } from "../components/instructions/TooCold";
+import { Good, GoodNight } from "../components/instructions/Good";
 import { WeatherContext } from "../components/context/Context";
 import WeatherCard from "../components/other/other";
 import { fetchData } from "./welcome";
@@ -55,22 +54,22 @@ export function Information() {
       style={{ backgroundColor: theme.background, color: theme.color }}
       className="h-screen text-2xl "
     >
-      <div className=" font-roboto m-0 p-0 ">
+      <div className=" font-roboto m-0 p-0 gap-4 ">
         <div className="container mx-auto p-4 h-screen flex ">
           
           <SideBar />
           
-          <div className="flex-col justify-between self-start ">
+          <div className="flex-col justify-between gap-2 self-start ">
             <SearchBar onLocation={({ data, location }) => {
               DataStore.set("location", location);
               setWeatherData(data);
             }} />
             <Weather_Overview /> 
-              <HotNight />
+              <Good />
               {/*<Cold />*/}
             <WeatherCard weatherData={weatherData} className="mt-12 " />
           </div>
-          <div className="flex-col self-start ml-3">
+          <div className="flex-col self-start ml-12">
             <Forecast weatherData={weatherData} />
             <CanvasComponent />  
           </div>

@@ -13,7 +13,7 @@ const CanvasComponent = ({ width = 380, height = 200 }) => {
 
         const drawScene = () => {
             // Fill the canvas with the base color
-            ctx.fillStyle = theme.secondary;
+            ctx.fillStyle = theme.background;
             ctx.fillRect(0, 0, width, height);
 
             const radius = (width / 2) * 0.9; // Reduce the radius by 10%
@@ -24,7 +24,7 @@ const CanvasComponent = ({ width = 380, height = 200 }) => {
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI, false);
             ctx.closePath();
-            ctx.fillStyle = theme.secondary; // Base color for the half-circle
+            ctx.fillStyle = theme.background; // Base color for the half-circle
             ctx.fill();
 
             // Outline the half-circle with a gradient or solid color
