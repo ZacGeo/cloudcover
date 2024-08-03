@@ -22,12 +22,15 @@ const WeatherCard = ({ weatherData }) => {
     windSpeed10m: weatherData.hourly.wind_speed_10m[currentHourIndex],
     cloudCover: weatherData.hourly.cloud_cover[currentHourIndex],
     visibility: weatherData.hourly.visibility[currentHourIndex],
+    
   };
 
   // Extract the daily data for today
   const currentDayIndex = weatherData.daily.time.findIndex(time => time.startsWith(currentTime.slice(0, 10)));
   const currentDailyData = {
     uvIndexMax: weatherData.daily.uv_index_max[currentDayIndex],
+    rain_sum: weatherData.daily.rain_sum[currentDayIndex],
+    snowfall_sum: weatherData.daily.snowfall_sum[currentDayIndex]
   };
 
   return (
@@ -43,7 +46,7 @@ const WeatherCard = ({ weatherData }) => {
       </div>
       <div className="text-center">
         <div className="text-xl font-semibold">Chance of rain</div>
-        <div className="text-2xl font-bold">0%</div> {/* Assuming no rain chance data provided */}
+        <div className="text-2xl font-bold">{currentDailyData.rain_sum}%</div> {/* Assuming no rain chance data provided */}
       </div>
       <div className="text-center">
         <div className="text-xl font-semibold">UV Index</div>

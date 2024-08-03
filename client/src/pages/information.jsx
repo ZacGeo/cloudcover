@@ -1,10 +1,6 @@
-import {
-  getCurrentTheme,
-  getInformationTheme,
-} from "../components/usefulFunctions/TimeTheme";
+import { getCurrentTheme} from "../components/usefulFunctions/TimeTheme";
 import { useState, useEffect, useContext } from "react";
 import CanvasComponent from "../components/phases/Phases";
-import { Good, GoodNight } from "../components/instructions/Good";
 import { WeatherContext } from "../components/context/Context";
 import WeatherCard from "../components/other/other";
 import { fetchData } from "./welcome";
@@ -13,12 +9,11 @@ import SideBar from "../components/usefulFunctions/SideBar";
 import SearchBar from "../components/usefulFunctions/searchBar";
 import Weather_Overview from "../components/phases/Weather_Overview";
 import Forecast from "../components/phases/Forecast";
-
+import Instruction from "../components/instructions/instruction";
 
 
 export function Information() {
   const [theme, setTheme] = useState(getCurrentTheme());
-  const [infoTheme, setInfoTheme] = useState(getInformationTheme());
   const [loaded, setLoaded] = useState(false);
   const { weatherData, setWeatherData } = useContext(WeatherContext);
   console.log(weatherData);
@@ -27,7 +22,6 @@ export function Information() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTheme(getCurrentTheme());
-      setInfoTheme(getInformationTheme());
     }, 600000); // Update theme every 10 minutes
 
     async function load() {
@@ -65,8 +59,7 @@ export function Information() {
               setWeatherData(data);
             }} />
             <Weather_Overview /> 
-              <Good />
-              {/*<Cold />*/}
+              <Instruction weatherData={weatherData}/>
             <WeatherCard weatherData={weatherData} className="mt-12 " />
           </div>
           <div className="flex-col self-start ml-12">

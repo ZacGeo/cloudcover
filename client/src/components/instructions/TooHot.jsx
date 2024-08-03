@@ -49,7 +49,8 @@ export function HotNight() {
   return (
     <div
       style={{
-        background: "radial-gradient(178.94% 106.41% at 26.42% 106.41%,  #2C2F48 0%, rgba(255, 69, 0, 0) 71.88%), #1f2937"
+        background: "radial-gradient(at 88% 40%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%), radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%), radial-gradient(at 41% 94%, hsl(189, 97%, 36%) 0px, transparent 85%), radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%)"
+        
       }}
       className=" flex rounded-xl shadow-md overflow-hidden md:max-w-2xl h-full mt-5"
     >

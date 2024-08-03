@@ -1,7 +1,4 @@
 import { getCurrentTheme } from "../usefulFunctions/TimeTheme";
-import cloudy from "../../assets/weather_icon.png";
-import rain from "../../assets/rain.png";
-import sunny from "../../assets/sunny.png";
 
 export default function Forecast({weatherData}) {
 
@@ -18,20 +15,32 @@ export default function Forecast({weatherData}) {
     ]
 
     return (
-        <div className=" rounded-lg shadow-lg p-6 flex flex-col gap-4 self-start mt-4 ml-4" style={{background: theme.secondary, color: theme.color}}>
-            <h2 className="text-xl font-semibold">7-Day Forecast</h2>
-            <div className="flex flex-col gap-2">
-                {days.map((day, index) => (
-                    <div key={index} className="flex justify-between items-center">
-                        <div className="flex items-center gap-4">
-                            <span className="material-icons text-3xl">{day.icon}</span> <span>{day.day}</span>
-                        </div>
-                        <div className="flex gap-8">
-                            <span>{day.description}</span> <span>{day.tempHigh}° / {day.tempLow}°</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
+        <div className="rounded-lg shadow-lg p-6 mt-4 ml-4" style={{background: theme.secondary, color: theme.color}}>
+        <h2 className="text-xl font-semibold mb-4">7-Day Forecast</h2>
+        <div className="grid grid-cols-1 gap-4">
+            <table className="min-w-full divide-y divide-gray-200">
+                <thead >
+                    <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Day</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Description</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Temperature</th>
+                    </tr>
+                </thead>
+                <tbody className=" divide-y divide-gray-200" style={{background: theme.secondary}}>
+                    {days.map((day, index) => (
+                        <tr key={index}>
+                            <td className="px-6 py-4 whitespace-nowrap flex items-center gap-2">
+                                <span className="material-icons text-3xl">{day.icon}</span>
+                                <span>{day.day}</span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">{day.description}</td>
+                            <td className="px-6 py-4 whitespace-nowrap">{day.tempHigh}° / {day.tempLow}°</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
+    </div>
+    
     );
 };
