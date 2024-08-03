@@ -23,6 +23,7 @@ export default function Instruction({weatherData}) {
   // Extract the current hourly data
   const currentHourlyData = {
     temperature2m: weatherData.hourly.temperature_2m[currentHourIndex],
+    
     windSpeed10m: weatherData.hourly.wind_speed_10m[currentHourIndex],
     cloudCover: weatherData.hourly.cloud_cover[currentHourIndex],
     visibility: weatherData.hourly.visibility[currentHourIndex],
@@ -30,7 +31,7 @@ export default function Instruction({weatherData}) {
     rain_sum: weatherData.daily.rain_sum[0],
     snowfall_sum: weatherData.daily.snowfall_sum[0]
   };
-
+  
   // Determine the appropriate instruction based on the weather data
   if (currentHourlyData.temperature2m > 30) {
     return isNight ? <HotNight /> : <Hot />;

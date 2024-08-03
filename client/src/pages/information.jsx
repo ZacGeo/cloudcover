@@ -59,7 +59,7 @@ export function Information() {
               setWeatherData(data);
             }} />
             <Weather_Overview /> 
-              <Instruction weatherData={weatherData}/>
+            <Instruction weatherData={weatherData}/>
             <WeatherCard weatherData={weatherData} className="mt-12 " />
           </div>
           <div className="flex-col self-start ml-12">

@@ -1,8 +1,5 @@
 import { Animation } from "../components/eve/Eve";
-import {
-  getCurrentTheme,
-  welcomeTimeTheme,
-} from "../components/usefulFunctions/TimeTheme";
+import { getCurrentTheme,welcomeTimeTheme,} from "../components/usefulFunctions/TimeTheme";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { WeatherContext } from "../components/context/Context";

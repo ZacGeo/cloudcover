@@ -1,5 +1,5 @@
 // AnimationComponent.js
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './style.css';
 import { getCurrentTheme } from '../usefulFunctions/TimeTheme'
 
