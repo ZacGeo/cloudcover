@@ -56,23 +56,23 @@ export function HotNight() {
     >
       <div className="p-8 flex flex-col">
         <ul className="list-disc space-y-2">
-          <li className="text-sm text-black font-sans font-bold">
+          <li className="text-sm text-white font-sans font-bold">
             Use air conditioning if available, or use fans to circulate air.
           </li>
-          <li className="text-sm text-black font-sans font-bold">
+          <li className="text-sm text-white font-sans font-bold">
             Open windows to allow for cross-ventilation, provided it’s safe and cooler outside.
           </li>
-          <li className="text-sm text-black font-sans font-bold">
+          <li className="text-sm text-white font-sans font-bold">
             Use light-colored, breathable bed linens made from natural fibers like cotton or linen.
           </li>
-          <li className="text-sm text-black font-sans font-bold">
+          <li className="text-sm text-white font-sans font-bold">
              Take a cool shower or bath before bed to lower your body temperature.
           </li>
-          <li className="text-sm text-black font-sans font-bold">
+          <li className="text-sm text-white font-sans font-bold">
             Drink plenty of water. Aim for at least 8-10
             glasses.
           </li>
-          <li className="text-sm text-black font-sans font-bold">
+          <li className="text-sm text-white font-sans font-bold">
              If feasible, sleep outdoors on a balcony or porch where it might be cooler.
           </li>
         </ul>
