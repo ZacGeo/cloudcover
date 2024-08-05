@@ -27,3 +27,11 @@ extreme conditions in that location.
 
 
 <h2>Analysis:</h2>
+<h3>Welcome Page</h3>
+   <p>
+    In this page there is an animated object made with css and an input element where the user will enter the city he wants to see the forecast.
+   </p>
+   <ul>
+     <li>The animated objects are the sun and the moon and both objects change depending the time along with the background them. (from 6PM to 9AM for the sun and from 9AM to 6PM for the moon)</li>
+     <li>The input will take from the user the name of the city in order for the app to fetch and display the weather data for the city. If the user enters the name wrongly it will display the expected message</li>
+   </ul>
