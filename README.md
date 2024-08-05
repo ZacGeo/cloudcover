@@ -8,7 +8,7 @@ extreme conditions in that location.
 
 <h2>Images:<h2>
  
- **DayTime:**
+ <h3>DayTime:</h3>
  
   ![image](https://github.com/user-attachments/assets/a29922e9-5581-4e82-a02c-bf150736fd89)
 
@@ -18,7 +18,7 @@ extreme conditions in that location.
 
 
 
- **NightTime:**
+ <h3>NightTime:<h3>
  ![image](https://github.com/user-attachments/assets/79cac112-5878-4d8c-bb67-f5984d53f12e)
 
 
