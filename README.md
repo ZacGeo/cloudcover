@@ -37,3 +37,12 @@ extreme conditions in that location.
      <li>The animated objects are the sun and the moon and both objects change depending the time along with the background them. (from 6PM to 9AM for the sun and from 9AM to 6PM for the moon)</li>
      <li>The input will take from the user the name of the city in order for the app to fetch and display the weather data for the city. If the user enters the name wrongly it will display the expected message</li>
    </ul>
+
+<h3>Information Page</h3>
+  <p>
+   In this page there will be some data which i fetch those data using Open-Meteo API also it provides a 7-day forecast of that city
+  </p>
+  <ul>
+   <li>At the weather overview the temperature the </li>
+   <li></li>
+  </ul>
