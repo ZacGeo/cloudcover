@@ -43,6 +43,9 @@ extreme conditions in that location.
    In this page there will be some data which i fetch those data using Open-Meteo API also it provides a 7-day forecast of that city
   </p>
   <ul>
-   <li>At the weather overview the temperature the </li>
-   <li></li>
+   <li>In the weather overview, the temperature, the name of the city entered by the user, and the sun or moon icons are displayed.</li>
+   <li>The search bar is used in order for the user to put a different city at the information page</li>
+   <li>Under the weather overview, there are two sections. One of them is an instruction section that provides guidance on what to do in case of extreme weather conditions.</li>
+   <li>Under the instruction section there is a section with some additional indformation like the chance of rain, the uv index, the temperature feel, the dew point and the humididty</li>
+   <li>Aside all of the other elements there is the 7-day forecast where it displays the statues of the weather for the next days and also the maximum and minimum temperature each day </li>
   </ul>
