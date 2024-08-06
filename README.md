@@ -48,4 +48,5 @@ extreme conditions in that location.
    <li>Under the weather overview, there are two sections. One of them is an instruction section that provides guidance on what to do in case of extreme weather conditions.</li>
    <li>Under the instruction section there is a section with some additional indformation like the chance of rain, the uv index, the temperature feel, the dew point and the humididty</li>
    <li>Aside all of the other elements there is the 7-day forecast where it displays the statues of the weather for the next days and also the maximum and minimum temperature each day </li>
+   <li>Under the 7-day forecast there is the phase of the moon and sun during day or night this was made with canvas and it updates every second so the phase is accurate with the time</li>
   </ul>
